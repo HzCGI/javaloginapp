@@ -1,0 +1,25 @@
+- hosts: all
+  vars:
+   ansible_host_key_checking: false
+  become: true
+  tasks:
+
+    - name: copy war
+    copy:
+      src: /var/lib/jenkins/workspace/Hanz-Deploy_on_Container_using_ansible/webapp/target/webapp.war
+      est: /opt/docker/hanz/
+    - name: Stop current container
+    command: docker stop hanz-devops-container
+    ignore_errors: yes
+    - name: remove stopped container
+    command: docker rm hanz-devops-container
+    ignore_errors: yes
+    - name: remover docker images # Clean up task
+    command: docker rmi hanz-devops-image:latest
+    ignore_errors: yes # May not find image if first run
+    - name: create docker image using war file
+    command: docker build -t hanz-devops-image:latest .
+    args :
+      chdir: /opt/docker/hanz
+    - name: run container
+    command: docker run -d --name hanz-devops-container -p 8081:8080 hanz-devops-image:latest
