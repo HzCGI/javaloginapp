@@ -8,16 +8,24 @@
         src: /var/lib/jenkins/workspace/Hanz-Deploy_on_Container/webapp/target/webapp.war
         dest: /opt/docker/hanz/
     - name: Stop current container
-      command: docker stop hanz-devops-container
+      docker-container:
+        name: hanz-devops-container
+        state: stopped
       ignore_errors: yes
     - name: remove stopped container
-      command: docker rm hanz-devops-container
+      docker-container: 
+        name: hanz-devops-container
+        state: absent
       ignore_errors: yes
     - name: remover docker images # Clean up task
-      command: docker rmi hanz-devops-image:latest
+      docker-image: 
+        name: hanz-devops-image:latest
+        state: absent
       ignore_errors: yes # May not find image if first run
     - name: create docker image using war file
-      command: docker build -t hanz-devops-image:latest .
+      docker-image:
+        name: hanz-devops-image:latest
+        state: present
       args :
         chdir: /opt/docker/hanz
     - name: run container
