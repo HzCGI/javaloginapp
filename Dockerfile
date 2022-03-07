@@ -10,4 +10,4 @@ MAINTAINER Hanz
 
 # copy war file on to container
 
-COPY ./webapp.war /usr/local/tomcat/webapps
+COPY ./bootcamp.war /usr/local/tomcat/webapps
