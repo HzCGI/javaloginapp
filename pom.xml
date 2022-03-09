@@ -8,11 +8,11 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>hanzDemo</groupId>
-	<artifactId>hanzDemo</artifactId>
+	<groupId>hanz1</groupId>
+	<artifactId>hanz1</artifactId>
 	<version>2.0-RELEASE</version>
 	<packaging>war</packaging>
-	<name>hanzDemo</name>
+	<name>hanz1</name>
 	<description>DevOps project for Spring Boot</description>
 
 	<properties>
