@@ -5,7 +5,7 @@
 
     - name: copy war
       copy:
-        src: /var/lib/jenkins/workspace/Hanz-Deploy_with_sonarqube/target/bootcamp.war
+        src: /var/lib/jenkins/workspace/Hanz-Deploy_using_ansible_optimizations/target/bootcamp.war
         dest: /opt/docker/hanz/
     - name: Stop current container
       docker_container:
