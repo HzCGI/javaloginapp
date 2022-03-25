@@ -7,6 +7,10 @@
       copy:
         src: /var/lib/jenkins/workspace/Hanz-Deploy_using_ansible_optimizations/target/bootcamp.war
         dest: /opt/docker/hanz/
+    - name: copy dockerfile
+      copy:
+        src: /var/lib/jenkins/workspace/Hanz-Deploy_using_ansible_optimizations/Dockerfile
+        dest: /opt/docker/hanz/
     - name: Stop current container
       docker_container:
         name: hanz-devops-container
