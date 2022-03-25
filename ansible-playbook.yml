@@ -23,8 +23,10 @@
     - name: create docker image using war file
       docker_image:
         name: hanz-devops-image:latest
-        build_path: /opt/docker/hanz
+        build:
+          path: /opt/docker/hanz
         state: present
+        source: build
     - name: run container
       docker_container:
        name: hanz-devops-container
